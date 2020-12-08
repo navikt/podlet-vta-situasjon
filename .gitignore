@@ -1,11 +1,3 @@
-# IDE
-.idea
-.vs
-.vscode
-
-# Mac OS
-.DS_Store
-
 # Logs
 logs
 *.log
@@ -110,3 +102,13 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Create react app
+build/
+
+# Editors
+.idea/
+.vscode/
+
+# Mac
+.DS_Store/
