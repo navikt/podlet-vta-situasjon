@@ -1,0 +1,7 @@
+app: podlet-vta-situasjon
+namespace: paw
+team: paw
+base_path: "/arbeid/podlet-vta-situasjon"
+ingressess: |
+  ingresses:
+    - https://arbeid.dev.nav.no/arbeid/podlet-vta-situasjon
