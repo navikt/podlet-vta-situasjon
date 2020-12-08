@@ -4,6 +4,7 @@ const fs = require("fs");
 
 const basePath = process.env.BASE_PATH || "/arbeid/podlet-vta-situasjon";
 const port = process.env.PORT || 7200;
+const podletVersion = process.env.VERSION_HASH || new Date().getTime();
 const isDevelopmentEnv = true;
 
 const podletName = "podlet-vta-situasjon";
@@ -15,8 +16,9 @@ const app = express();
 
 const podlet = new Podlet({
   name: podletName,
-  version: "1.0.0",
+  version: podletVersion,
   pathname: "/",
+  fallback: "/fallback",
   development: isDevelopmentEnv,
   logger: console,
 });
@@ -30,11 +32,17 @@ assets.entrypoints.forEach((element, index) => {
 });
 
 app.use(podlet.middleware());
+app.use("/static", express.static("./build/static"));
+app.use("/assets", express.static("./build/"));
 app.use(`${basePath}/static`, express.static("./build/static"));
 app.use(`${basePath}/assets`, express.static("./build/"));
 
 app.get(`${basePath}${podlet.content()}`, (req, res) => {
   res.status(200).podiumSend(`<div id="${podletName}"></div>`);
+});
+
+app.get(`${basePath}${podlet.fallback()}`, (req, res) => {
+  res.status(200).podiumSend(`<div>Fallback for ${podletName}:${podletVersion}</div>`);
 });
 
 // generate the podlet manifest
