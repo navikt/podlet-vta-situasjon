@@ -3,8 +3,8 @@ const Podlet = require("@podium/podlet");
 const fs = require("fs");
 
 const basePath = process.env.BASE_PATH || "/arbeid/podlet-vta-situasjon";
-const port = process.env.PORT || 7100;
-const podletVersion = process.env.VERSION_HASH || new Date().getTime();
+const port = process.env.PORT || 7200;
+const podletVersion = process.env.VERSION_HASH || `${new Date().getTime()}`;
 const isDevelopmentEnv = true;
 
 const podletName = "podlet-vta-situasjon";

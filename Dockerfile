@@ -18,7 +18,7 @@ WORKDIR /usr/src/app
 
 ARG BASE_PATH
 ARG VERSION_HASH
-ENV PORT=7100 \
+ENV PORT=7200 \
     NODE_ENV=production \
     BASE_PATH=$BASE_PATH \
     VERSION_HASH=$VERSION_HASH
@@ -27,7 +27,7 @@ COPY package*.json /usr/src/app/
 RUN npm ci
 COPY . /usr/src/app
 
-EXPOSE 7100
+EXPOSE 7200
 USER node
 
 COPY --from=builder /usr/src/app/build /usr/src/app/build
