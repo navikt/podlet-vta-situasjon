@@ -2,7 +2,7 @@ import React from "react";
 import { Sidetittel } from "nav-frontend-typografi";
 
 interface Props {
-  navn: string | undefined;
+  navn?: string;
 }
 
 function Navn(props: Props) {
