@@ -22,12 +22,12 @@ function Avregistrering(props: Props) {
   };
 
   return (
-    <>
+    <div>
       <Lenke href="#" onClick={handleToggleInfo}>
         Jeg ønsker ikke lengre å være registrert
       </Lenke>
       {visInfo && <Info />}
-    </>
+    </div>
   );
 }
 

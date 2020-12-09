@@ -4,6 +4,7 @@ import Panel from "nav-frontend-paneler";
 import Navn from "./components/navn";
 import Status from "./components/status";
 import Avregistrering from "./components/avregistrering";
+import Meldekort from "./components/meldekort";
 
 const statuser = ["registrert som arbeidssøker", "ikke lenger registrert som arbeidssøker", undefined];
 const oppfolging = [true, false];
@@ -19,7 +20,8 @@ function App() {
       <Panel border>
         <Navn navn={navn} />
         <Status status={status} />
-        <Avregistrering underOppfolging={underOppfolging} />
+        <Meldekort meldekort={"ja"} />
+        <Avregistrering underOppfolging={true} />
       </Panel>
     </div>
   );
