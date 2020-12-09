@@ -9,7 +9,7 @@ describe("tester Navn komponenten", () => {
   });
 
   test("komponenten VISES med navn", () => {
-    const navn = "Grim Gråsodden";
+    const navn: string = "Grim Gråsodden";
     render(<Navn navn={navn} />);
     expect(screen.getByText(navn)).toBeInTheDocument();
   });
