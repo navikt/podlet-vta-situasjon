@@ -36,9 +36,6 @@ spec:
     - name: NEXT_PUBLIC_API_URL
       value: {{base_path}}/api
   accessPolicy:
-    inbound:
-      external:
-        - host: person.dev.nav.no
     outbound:
       external:
         - host: api.amplitude.com
