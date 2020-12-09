@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Panel from "nav-frontend-paneler";
-import { Normaltekst, Systemtittel } from "nav-frontend-typografi";
+import { Normaltekst } from "nav-frontend-typografi";
 import Navn from "./components/navn";
 
 const situasjoner = ["arbeideledig", "i arbeid", "pensjonert", "på ferie", "NAV-ansatt", "sulten"];
