@@ -37,12 +37,8 @@ spec:
       value: {{base_path}}/api
   accessPolicy:
     inbound:
-      rules:
-        - application: arbeid.dev.intern.nav.no
       external:
         - host: person.dev.nav.no
     outbound:
-      rules:
-        - application: arbeid.dev.intern.nav.no
       external:
         - host: api.amplitude.com
