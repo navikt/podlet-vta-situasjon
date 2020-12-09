@@ -1,7 +1,25 @@
 import React from "react";
 
+export interface MeldekortProps {
+  etterregistrerteMeldekort: number;
+  meldekortbruker: boolean;
+  nyeMeldekort: {
+    antallNyeMeldekort: number;
+    nesteInnsendingAvMeldekort: string | null;
+    nesteMeldekort: {
+      fra: string;
+      kanSendesFra: string;
+      risikererTrekk: boolean;
+      sisteDatoForTrekk: string;
+      til: string;
+      uke: string;
+    };
+  };
+  resterendeFeriedager: number;
+}
+
 interface Props {
-  meldekort?: string;
+  meldekort?: MeldekortProps;
 }
 
 function Meldekort(props: Props) {
