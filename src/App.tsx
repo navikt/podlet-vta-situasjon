@@ -13,7 +13,7 @@ function App() {
   const situasjon = situasjoner[~~(situasjoner.length * Math.random())];
   const navn = fornavn[~~(fornavn.length * Math.random())] + " " + etternavn[~~(etternavn.length * Math.random())];
   return (
-    <div className="App">
+    <div className="podlet-vta-situasjon">
       <Panel border>
         <Navn navn={navn} />
         <Normaltekst>
