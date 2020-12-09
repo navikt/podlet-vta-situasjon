@@ -10,13 +10,15 @@
     "express": "4.17.1",
     "less": "3.12.2",
     "nav-frontend-core": "5.0.10",
+    "nav-frontend-lenker": "1.0.53",
+    "nav-frontend-lenker-style": "0.2.39",
     "nav-frontend-paneler": "2.0.22",
     "nav-frontend-paneler-style": "0.3.31",
     "nav-frontend-typografi": "2.0.37",
     "nav-frontend-typografi-style": "1.0.31",
     "prop-types": "15.7.2",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "web-vitals": "0.2.4"
   },
   "devDependencies": {
