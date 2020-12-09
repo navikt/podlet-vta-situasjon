@@ -1,25 +1,22 @@
 import React from "react";
 import "./App.css";
 import Panel from "nav-frontend-paneler";
-import { Normaltekst } from "nav-frontend-typografi";
 import Navn from "./components/navn";
+import Status from "./components/status";
 
-const situasjoner = ["arbeideledig", "i arbeid", "pensjonert", "på ferie", "NAV-ansatt", "sulten"];
+const statuser = ["registrert som arbeidssøker", "ikke lenger registrert som arbeidssøker", undefined];
 
 const fornavn = ["Julian", "Geir", "Michael", "Sergio", "Tormod"];
-const etternavn = ["Navnesen", "Testesen", "Olsen", "Hansen", "Navesen", "Narvesen"];
+const etternavn = ["Navnesen", "Navresen", "Nasreven", "Navensen", "Navesen", "Narvesen"];
 
 function App() {
-  const situasjon = situasjoner[~~(situasjoner.length * Math.random())];
+  const status = statuser[~~(statuser.length * Math.random())];
   const navn = fornavn[~~(fornavn.length * Math.random())] + " " + etternavn[~~(etternavn.length * Math.random())];
   return (
     <div className="podlet-vta-situasjon">
       <Panel border>
         <Navn navn={navn} />
-        <Normaltekst>
-          Våre roboter har konkludert med at du er <b>{situasjon}</b>. Stemmer ikke dette?{" "}
-          <a href="mailto:toppledelsen@nav.no">Send klage.</a>
-        </Normaltekst>
+        <Status status={status} />
       </Panel>
     </div>
   );
