@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Lenke from "nav-frontend-lenker";
-import { underOppfolgingUrl } from "../url";
 
 function Info() {
   return <div>Da skal du høre her, min venn</div>;
@@ -9,9 +8,8 @@ function Info() {
 function Avregistrering(props) {
   const [visInfo, setVisinfo] = useState(false);
   const { oppfolging } = props;
-  const { underOppfolging } = oppfolging;
 
-  if (!oppfolging || !underOppfolging) return null;
+  if (!oppfolging) return null;
 
   const handleToggleInfo = (event) => {
     event.preventDefault();
