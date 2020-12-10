@@ -6,32 +6,29 @@ import Navn from "./components/navn";
 import Status from "./components/status";
 import Avregistrering from "./components/avregistrering";
 import Meldekort from "./components/meldekort";
-
-const navnUrl =
-  process.env.NODE_ENV === "development"
-    ? "https://api.nav.no/dittnav-api/personalia/navn"
-    : "https://www.dev.nav.no/person/dittnav-api/personalia/navn";
+import { navnUrl, meldekortinfoUrl, underOppfolgingUrl } from "./url";
 
 const statuser = ["registrert som arbeidssøker", "ikke lenger registrert som arbeidssøker", undefined];
-// const oppfolging = [true, false];
 
-const fetcher = async (url: string) => {
+const fetcher = async (url) => {
   const response = await fetch(url, { method: "GET", credentials: "include" });
   const data = await response.json();
   return data;
 };
 
 function App() {
-  // const underOppfolging = oppfolging[~~(oppfolging.length * Math.random())];
   const status = statuser[~~(statuser.length * Math.random())];
   const { data: navnData } = useSWR(navnUrl, fetcher);
+  const { data: meldekort } = useSWR(meldekortinfoUrl, fetcher);
+  const { data: underOppfolging } = useSWR(underOppfolgingUrl, fetcher);
+
   return (
     <div className="podlet-vta-situasjon">
       <Panel border>
         {navnData && <Navn {...navnData} />}
         <Status status={status} />
-        <Meldekort />
-        <Avregistrering underOppfolging={true} />
+        <Meldekort meldekort={meldekort} />
+        <Avregistrering underOppfolging={underOppfolging} />
       </Panel>
     </div>
   );
