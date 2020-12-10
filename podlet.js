@@ -1,7 +1,6 @@
 const express = require("express");
 const Podlet = require("@podium/podlet");
 const fs = require("fs");
-const proxy = require("express-http-proxy");
 
 const basePath = process.env.BASE_PATH || "/arbeid/podlet-vta-situasjon";
 const port = process.env.PORT || 7200;
@@ -19,7 +18,6 @@ const podlet = new Podlet({
   name: podletName,
   version: podletVersion,
   pathname: "/",
-  fallback: "/fallback",
   development: isDevelopmentEnv,
   logger: console,
 });
@@ -38,17 +36,16 @@ app.use("/assets", express.static("./build/"));
 app.use(`${basePath}/static`, express.static("./build/static"));
 app.use(`${basePath}/assets`, express.static("./build/"));
 
-app.use(
-  `${basePath}${podlet.proxy({ target: "/api/oppfolging", name: "api-oppfolging" })}`,
-  proxy("http://veilarbproxy.q1.svc.nais.local/veilarboppfolging/api/oppfolging")
-);
-
-app.get(`${basePath}${podlet.content()}`, (req, res) => {
-  res.status(200).podiumSend(`<div id="${podletName}"></div>`);
+podlet.proxy({
+  name: "api-oppfolging",
+  target: "http://veilarbproxy.q1.svc.nais.local/veilarboppfolging/api/oppfolging",
 });
 
-app.get(`${basePath}${podlet.fallback()}`, (req, res) => {
-  res.status(200).podiumSend(`<div>Fallback for ${podletName}:${podletVersion}</div>`);
+app.get(`${basePath}${podlet.content()}`, (req, res) => {
+  const { mountOrigin, publicPathname } = res.locals.podium.context;
+  const url = new URL(publicPathname, mountOrigin);
+  console.log(url.href);
+  res.status(200).podiumSend(`<div id="${podletName}"></div>`);
 });
 
 // generate the podlet manifest
