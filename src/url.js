@@ -17,8 +17,8 @@ const OPPFOLGING_URL = {
 };
 
 const AUTH_URL = {
-  development: "https://api.nav.no/dittnav-api/loginstatus",
-  production: "https://www.dev.nav.no/person/dittnav-api/loginstatus",
+  development: "https://api.nav.no/innloggingsstatus/auth",
+  production: "https://innloggingsstatus.dev.nav.no/person/innloggingsstatus/auth",
 };
 
 export const meldekortinfoUrl = MELDEKORTINFO_URL[getEnvironment()];

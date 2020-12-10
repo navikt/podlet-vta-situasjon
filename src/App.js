@@ -16,7 +16,7 @@ const fetcher = async (url) => {
 function App() {
   const { data: auth } = useSWR(authUrl, fetcher);
   const { data: meldekort } = useSWR(meldekortinfoUrl, fetcher);
-  const { data: oppfolging } = useSWR(auth && auth.authLevel > 3 ? oppfolgingUrl : null, fetcher);
+  const { data: oppfolging } = useSWR(auth && auth.securityLevel === "4" ? oppfolgingUrl : null, fetcher);
 
   return (
     <div className="podlet-vta-situasjon">
