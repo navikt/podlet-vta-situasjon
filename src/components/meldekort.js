@@ -7,13 +7,18 @@
  */
 
 import React from "react";
+import MeldekortAdvarsel from "./meldekort-advarsel";
 
 function Meldekort(props) {
   const { meldekort } = props;
 
   if (!meldekort || !meldekort.meldekortbruker) return null;
 
-  return <>...dersom du ikke sender meldekort innen 2 dager vil du ikke lenger være registrert som arbeidssøker</>;
+  return (
+    <>
+      <MeldekortAdvarsel />
+    </>
+  );
 }
 
 export default Meldekort;

@@ -6,7 +6,7 @@ import Navn from "./components/navn";
 import Oppfolging from "./components/oppfolging";
 import Avregistrering from "./components/avregistrering";
 import Meldekort from "./components/meldekort";
-import { navnUrl, meldekortinfoUrl, underOppfolgingUrl, oppfolgingUrl } from "./url";
+import { authUrl, navnUrl, meldekortinfoUrl, oppfolgingUrl } from "./url";
 
 const fetcher = async (url) => {
   const response = await fetch(url, { method: "GET", credentials: "include" });
@@ -15,10 +15,10 @@ const fetcher = async (url) => {
 };
 
 function App() {
+  const { data: auth } = useSWR(authUrl, fetcher);
   const { data: navnData } = useSWR(navnUrl, fetcher);
   const { data: meldekort } = useSWR(meldekortinfoUrl, fetcher);
-  const { data: underOppfolging } = useSWR(underOppfolgingUrl, fetcher);
-  const { data: oppfolging } = useSWR(oppfolgingUrl, fetcher);
+  const { data: oppfolging } = useSWR(auth && auth.securityLevel === "4" ? oppfolgingUrl : null, fetcher);
 
   return (
     <div className="podlet-vta-situasjon">
@@ -26,7 +26,7 @@ function App() {
         {navnData && <Navn {...navnData} />}
         <Oppfolging oppfolging={oppfolging} />
         <Meldekort meldekort={meldekort} />
-        <Avregistrering underOppfolging={underOppfolging} />
+        <Avregistrering oppfolging={oppfolging} />
       </Panel>
     </div>
   );
