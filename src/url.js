@@ -23,7 +23,7 @@ const UNDER_OPPFOLGING_URL = {
 
 const OPPFOLGING_URL = {
   development: "https://api.nav.no/vta-api/oppfolging",
-  production: "/person/layout-dittnav/podium-resource/vta-situasjon/api-oppfolging",
+  production: "/person/layout-dittnav/podium-resource/podlet-vta-situasjon/api-oppfolging",
 };
 
 export const navnUrl = NAVN_URL[getEnvironment()];
