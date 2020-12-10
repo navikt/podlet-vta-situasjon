@@ -22,6 +22,9 @@ const podlet = new Podlet({
   fallback: "/fallback",
   development: isDevelopmentEnv,
   logger: console,
+  proxy: {
+    "api-oppfolging": "/api/oppfolging",
+  },
 });
 
 assets.entrypoints.forEach((element, index) => {
@@ -38,7 +41,7 @@ app.use("/assets", express.static("./build/"));
 app.use(`${basePath}/static`, express.static("./build/static"));
 app.use(`${basePath}/assets`, express.static("./build/"));
 
-app.use("/vta-api/oppfolging", proxy("http://veilarbproxy.q1.svc.nais.local/veilarboppfolging/api/oppfolging"));
+app.use("/api/oppfolging", proxy("http://veilarbproxy.q1.svc.nais.local/veilarboppfolging/api/oppfolging"));
 
 app.get(`${basePath}${podlet.content()}`, (req, res) => {
   res.status(200).podiumSend(`<div id="${podletName}"></div>`);

@@ -3,12 +3,10 @@ import Panel from "nav-frontend-paneler";
 import useSWR from "swr";
 import "./App.css";
 import Navn from "./components/navn";
-import Status from "./components/status";
+import Oppfolging from "./components/oppfolging";
 import Avregistrering from "./components/avregistrering";
 import Meldekort from "./components/meldekort";
-import { navnUrl, meldekortinfoUrl, underOppfolgingUrl } from "./url";
-
-const statuser = ["registrert som arbeidssøker", "ikke lenger registrert som arbeidssøker", undefined];
+import { navnUrl, meldekortinfoUrl, underOppfolgingUrl, oppfolgingUrl } from "./url";
 
 const fetcher = async (url) => {
   const response = await fetch(url, { method: "GET", credentials: "include" });
@@ -17,16 +15,16 @@ const fetcher = async (url) => {
 };
 
 function App() {
-  const status = statuser[~~(statuser.length * Math.random())];
   const { data: navnData } = useSWR(navnUrl, fetcher);
   const { data: meldekort } = useSWR(meldekortinfoUrl, fetcher);
   const { data: underOppfolging } = useSWR(underOppfolgingUrl, fetcher);
+  const { data: oppfolging } = useSWR(oppfolgingUrl, fetcher);
 
   return (
     <div className="podlet-vta-situasjon">
       <Panel border>
         {navnData && <Navn {...navnData} />}
-        <Status status={status} />
+        <Oppfolging oppfolging={oppfolging} />
         <Meldekort meldekort={meldekort} />
         <Avregistrering underOppfolging={underOppfolging} />
       </Panel>
