@@ -1,6 +1,7 @@
 const express = require("express");
 const Podlet = require("@podium/podlet");
 const fs = require("fs");
+const proxy = require("express-http-proxy");
 
 const basePath = process.env.BASE_PATH || "/arbeid/podlet-vta-situasjon";
 const port = process.env.PORT || 7200;
@@ -36,6 +37,8 @@ app.use("/static", express.static("./build/static"));
 app.use("/assets", express.static("./build/"));
 app.use(`${basePath}/static`, express.static("./build/static"));
 app.use(`${basePath}/assets`, express.static("./build/"));
+
+app.use("/vta-api/oppfolging", proxy("http://veilarbproxy.q1.svc.nais.local/veilarboppfolging/api/oppfolging"));
 
 app.get(`${basePath}${podlet.content()}`, (req, res) => {
   res.status(200).podiumSend(`<div id="${podletName}"></div>`);

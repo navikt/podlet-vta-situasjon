@@ -21,6 +21,11 @@ const UNDER_OPPFOLGING_URL = {
   production: "https://www.dev.nav.no/person/dittnav-api/oppfolging",
 };
 
+const OPPFOLGING_URL = {
+  development: "https://api.nav.no/vta-api/oppfolging",
+  production: "https://www.dev.nav.no/person/dittnav-api/oppfolging",
+};
+
 export const navnUrl = NAVN_URL[getEnvironment()];
 export const meldekortinfoUrl = MELDEKORTINFO_URL[getEnvironment()];
 export const underOppfolgingUrl = UNDER_OPPFOLGING_URL[getEnvironment()];
