@@ -13,7 +13,7 @@ const NAVN_URL = {
 
 const MELDEKORTINFO_URL = {
   development: "https://api.nav.no/dittnav-api/meldekortinfo",
-  production: "https://www.dev.nav.no/person/dittnav-api/meldkortinfo",
+  production: "https://www.dev.nav.no/person/dittnav-api/meldekortinfo",
 };
 
 const UNDER_OPPFOLGING_URL = {
@@ -23,7 +23,7 @@ const UNDER_OPPFOLGING_URL = {
 
 const OPPFOLGING_URL = {
   development: "https://api.nav.no/vta-api/oppfolging",
-  production: "/layout-dittnav/podium-resource/podlet-din-situasjon/api-oppfolging",
+  production: "/layout-dittnav/podium-resource/podlet-vta-situasjon/api-oppfolging",
 };
 
 export const navnUrl = NAVN_URL[getEnvironment()];
