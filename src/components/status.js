@@ -1,11 +1,7 @@
 import React from "react";
 import { Systemtittel } from "nav-frontend-typografi";
 
-interface Props {
-  status?: string;
-}
-
-function Status(props: Props) {
+function Status(props) {
   const { status } = props;
 
   if (!status) return null;

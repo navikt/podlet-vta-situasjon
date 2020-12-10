@@ -1,11 +1,7 @@
 import React from "react";
 import { Sidetittel } from "nav-frontend-typografi";
 
-interface Props {
-  navn?: string;
-}
-
-function Navn(props: Props) {
+function Navn(props) {
   const { navn } = props;
 
   if (!navn) return null;

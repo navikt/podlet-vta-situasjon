@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import Lenke from "nav-frontend-lenker";
 
-interface Props {
-  underOppfolging: boolean;
-}
-
 function Info() {
   return <div>Da skal du høre her, min venn</div>;
 }
 
-function Avregistrering(props: Props) {
+function Avregistrering(props) {
   const [visInfo, setVisinfo] = useState(false);
   const { underOppfolging } = props;
 
   if (!underOppfolging) return null;
 
-  const handleToggleInfo = (event: any) => {
+  const handleToggleInfo = (event) => {
     event.preventDefault();
     const info = visInfo;
     setVisinfo(!info);
