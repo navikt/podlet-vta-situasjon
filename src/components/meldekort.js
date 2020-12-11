@@ -12,7 +12,8 @@ import MeldekortAdvarsel from "./meldekort-advarsel";
 function Meldekort(props) {
   const { meldekort } = props;
 
-  if (!meldekort || !meldekort.meldekortbruker) return null;
+  if (!meldekort) return null;
+  if (meldekort && meldekort.meldekortbruker !== true) return null;
 
   return (
     <>

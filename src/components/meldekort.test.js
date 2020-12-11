@@ -1,7 +1,6 @@
 import "@testing-library/jest-dom/extend-expect";
 import { render, screen } from "@testing-library/react";
 import Meldekort from "./meldekort";
-import data from "../mocks/meldekortinfo.json";
 
 describe("tester Meldekort komponenten", () => {
   test("komponenten rendres IKKE uten innhold", () => {
@@ -9,9 +8,11 @@ describe("tester Meldekort komponenten", () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  test("komponenten VISES med meldekort", () => {
-    const status = "ikke registrert som arbeidssøker";
+  test("komponenten VISES med meldekortbruker true", () => {
+    const data = {
+      meldekortbruker: true,
+    };
     render(<Meldekort meldekort={data} />);
-    expect(screen.getByText(/meldekort/)).toBeInTheDocument();
+    expect(screen.getByText(/meldekort/i)).toBeInTheDocument();
   });
 });
