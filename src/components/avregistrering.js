@@ -11,6 +11,9 @@ function Avregistrering(props) {
 
   if (!oppfolging) return null;
 
+  if ((oppfolging && oppfolging.formidlingsgruppe !== "ARBS") || (oppfolging && oppfolging.underOppfolging !== true))
+    return null;
+
   const handleToggleInfo = (event) => {
     event.preventDefault();
     const info = visInfo;
