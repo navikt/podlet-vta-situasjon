@@ -17,7 +17,7 @@ const app = express();
 const podlet = new Podlet({
   name: podletName,
   version: podletVersion,
-  pathname: "/",
+  pathname: basePath,
   development: isDevelopmentEnv,
   logger: console,
 });
