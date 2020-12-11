@@ -8,6 +8,7 @@
 
 import React from "react";
 import MeldekortAdvarsel from "./meldekort-advarsel";
+import { Systemtittel } from "nav-frontend-typografi";
 
 function Meldekort(props) {
   const { meldekort } = props;
@@ -17,7 +18,8 @@ function Meldekort(props) {
 
   return (
     <>
-      <MeldekortAdvarsel />
+      <Systemtittel>Meldekort</Systemtittel>
+      <MeldekortAdvarsel meldekort={meldekort} />
     </>
   );
 }
