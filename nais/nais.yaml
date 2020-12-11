@@ -39,4 +39,4 @@ spec:
     outbound:
       external:
         - host: api.amplitude.com
-        - host: veilarbproxy.q1.svc.nais.local
+        - host: pto-proxy.dev.nav.no

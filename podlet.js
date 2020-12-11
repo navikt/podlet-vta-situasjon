@@ -38,7 +38,7 @@ app.use(`${basePath}/assets`, express.static("./build/"));
 
 podlet.proxy({
   name: "api-oppfolging",
-  target: "http://veilarbproxy.q1.svc.nais.local/veilarboppfolging/api/oppfolging",
+  target: "https://pto-proxy.dev.nav.no/proxy/veilarboppfolging/api/oppfolging",
 });
 
 app.get(`${basePath}${podlet.content()}`, (req, res) => {
