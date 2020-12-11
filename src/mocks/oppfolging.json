@@ -1,7 +1,7 @@
 {
   "reservasjonKRR": false,
-  "underOppfolging": true,
-  "kanReaktiveres": null,
+  "underOppfolging": false,
+  "kanReaktiveres": true,
   "inaktiveringsdato": null,
   "erSykmeldtMedArbeidsgiver": false,
   "servicegruppe": "BKART",

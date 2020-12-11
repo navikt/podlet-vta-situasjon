@@ -1,6 +1,6 @@
 {
   "etterregistrerteMeldekort": 0,
-  "meldekortbruker": true,
+  "meldekortbruker": false,
   "nyeMeldekort": {
     "antallNyeMeldekort": 1,
     "nesteInnsendingAvMeldekort": null,

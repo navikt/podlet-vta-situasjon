@@ -1,10 +1,10 @@
 import React from "react";
-import Panel from "nav-frontend-paneler";
 import useSWR from "swr";
 import "./App.css";
 import Oppfolging from "./components/oppfolging";
 import Avregistrering from "./components/avregistrering";
 import Meldekort from "./components/meldekort";
+import Reaktivering from "./components/reaktivering";
 import { authUrl, meldekortinfoUrl, oppfolgingUrl } from "./url";
 
 const fetcher = async (url) => {
@@ -20,11 +20,10 @@ function App() {
 
   return (
     <div className="podlet-vta-situasjon">
-      <Panel border>
-        <Oppfolging oppfolging={oppfolging} />
-        <Meldekort meldekort={meldekort} />
-        <Avregistrering oppfolging={oppfolging} />
-      </Panel>
+      <Oppfolging oppfolging={oppfolging} />
+      <Meldekort meldekort={meldekort} />
+      <Avregistrering oppfolging={oppfolging} />
+      <Reaktivering oppfolging={oppfolging} />
     </div>
   );
 }
