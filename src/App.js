@@ -28,7 +28,6 @@ function App() {
       <Meldekort meldekort={meldekort} />
       <Avregistrering oppfolging={oppfolging} />
       <Reaktivering oppfolging={oppfolging} />
-      <button onClick={handleClick}>Trigger feil!</button>
     </div>
   );
 }
