@@ -18,12 +18,17 @@ function App() {
   const { data: meldekort } = useSWR(meldekortinfoUrl, fetcher);
   const { data: oppfolging } = useSWR(auth && auth.securityLevel === "4" ? oppfolgingUrl : null, fetcher);
 
+  const handleClick = (event) => {
+    throw new Error("sentrytest!", event);
+  };
+
   return (
     <div className="podlet-vta-situasjon">
       <Oppfolging oppfolging={oppfolging} />
       <Meldekort meldekort={meldekort} />
       <Avregistrering oppfolging={oppfolging} />
       <Reaktivering oppfolging={oppfolging} />
+      <button onClick={handleClick}>Trigger feil!</button>
     </div>
   );
 }
