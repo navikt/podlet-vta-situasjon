@@ -30,6 +30,7 @@
     "@testing-library/jest-dom": "5.11.6",
     "@testing-library/react": "11.2.2",
     "@testing-library/user-event": "12.6.0",
+    "eslint-plugin-jsx-a11y": "6.4.1",
     "husky": "4.3.6",
     "lint-staged": "10.5.3",
     "msw": "0.24.2",
@@ -39,15 +40,20 @@
   "scripts": {
     "start": "NODE_ENV=development craco start",
     "build": "craco build",
-    "test": "craco test",
-    "test-ci": "CI=true craco test",
+    "test": "npm run lint && craco test",
+    "test-ci": "npm run lint && CI=true craco test",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm i",
-    "podlet": "node podlet.js"
+    "podlet": "node podlet.js",
+    "lint": "eslint --ext .js src"
   },
   "eslintConfig": {
+    "plugins": [
+      "jsx-a11y"
+    ],
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:jsx-a11y/recommended"
     ]
   },
   "browserslist": {

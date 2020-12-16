@@ -14,7 +14,7 @@ describe("tester Avregistrering komponenten", () => {
       underOppfolging: true,
       formidlingsgruppe: "IARBS",
     };
-    const { container } = render(<Avregistrering oppfolging={false} />);
+    const { container } = render(<Avregistrering oppfolging={oppfolging} />);
     expect(container).toBeEmptyDOMElement();
   });
 
@@ -22,7 +22,7 @@ describe("tester Avregistrering komponenten", () => {
     const oppfolging = {
       underOppfolging: false,
     };
-    const { container } = render(<Avregistrering oppfolging={false} />);
+    const { container } = render(<Avregistrering oppfolging={oppfolging} />);
     expect(container).toBeEmptyDOMElement();
   });
 
