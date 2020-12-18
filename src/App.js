@@ -25,6 +25,14 @@ function App() {
       <Meldekort meldekort={meldekort} />
       <Avregistrering oppfolging={oppfolging} registrering={registrering} />
       <Reaktivering oppfolging={oppfolging} registrering={registrering} />
+
+      <button
+        onClick={() => {
+          throw new Error("Jeg ønsker meg en Sentry-feil til jul");
+        }}
+      >
+        Kræsj
+      </button>
     </div>
   );
 }
