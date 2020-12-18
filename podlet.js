@@ -5,6 +5,7 @@ const fs = require("fs");
 const basePath = process.env.BASE_PATH || "/arbeid/podlet-vta-situasjon";
 const port = process.env.PORT || 7200;
 const podletVersion = process.env.VERSION_HASH || `${new Date().getTime()}`;
+const ptoProxyUrl = process.env.PTO_PROXY_URL;
 const isDevelopmentEnv = true;
 
 const podletName = "podlet-vta-situasjon";
@@ -38,7 +39,12 @@ app.use(`${basePath}/assets`, express.static("./build/"));
 
 podlet.proxy({
   name: "api-oppfolging",
-  target: "https://pto-proxy.dev.intern.nav.no/proxy/veilarboppfolging/api/oppfolging",
+  target: `${ptoProxyUrl}/proxy/veilarboppfolging/api/oppfolging`,
+});
+
+podlet.proxy({
+  name: "api-registrering",
+  target: `${ptoProxyUrl}/proxy/veilarbregistrering/api/registrering`,
 });
 
 app.get(`${basePath}${podlet.content()}`, (req, res) => {
