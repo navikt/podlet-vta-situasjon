@@ -16,6 +16,11 @@ const OPPFOLGING_URL = {
   production: "/person/layout-dittnav/podium-resource/podlet-vta-situasjon/api-oppfolging",
 };
 
+const REGISTRERING_URL = {
+  development: "https://api.nav.no/vta-api/registrering",
+  production: "/person/layout-dittnav/podium-resource/podlet-vta-situasjon/api-registrering",
+};
+
 const AUTH_URL = {
   development: "https://api.nav.no/innloggingsstatus/auth",
   production: "https://innloggingsstatus.dev.nav.no/person/innloggingsstatus/auth",
@@ -23,4 +28,5 @@ const AUTH_URL = {
 
 export const meldekortinfoUrl = MELDEKORTINFO_URL[getEnvironment()];
 export const oppfolgingUrl = OPPFOLGING_URL[getEnvironment()];
+export const registreringUrl = REGISTRERING_URL[getEnvironment()];
 export const authUrl = AUTH_URL[getEnvironment()];
