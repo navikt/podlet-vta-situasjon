@@ -42,7 +42,7 @@
   },
   "scripts": {
     "start": "NODE_ENV=development craco start",
-    "build": "craco build",
+    "build": "REACT_APP_SENTRY_RELEASE=$(git rev-parse --short HEAD) craco build",
     "test": "npm run lint && craco test",
     "test-ci": "npm run lint && CI=true craco test",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm i",
