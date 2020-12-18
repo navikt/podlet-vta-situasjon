@@ -47,7 +47,8 @@
     "test-ci": "npm run lint && CI=true craco test",
     "refresh": "rm -rf node_modules && rm package-lock.json && npm i",
     "podlet": "node podlet.js",
-    "lint": "eslint --ext .js src"
+    "lint": "eslint --ext .js src",
+    "sentry-release": "(export SENTRY_RELEASE=$(git rev-parse --short HEAD); node scripts/sentry-release)"
   },
   "eslintConfig": {
     "plugins": [
