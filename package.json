@@ -6,7 +6,7 @@
     "@craco/craco": "6.0.0",
     "@metrics/prometheus-consumer": "3.0.1",
     "@podium/podlet": "4.4.14",
-    "@sentry/browser": "5.29.1",
+    "@sentry/browser": "5.29.2",
     "classnames": "2.2.6",
     "craco-less": "1.17.1",
     "express": "4.17.1",
