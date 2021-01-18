@@ -51,8 +51,8 @@ podlet.proxy({
 });
 
 podlet.proxy({
-  name: "meldekort",
-  target: `https://www-q1.nav.no/meldekort/meldekort-api`,
+  name: "api-meldekort",
+  target: `https://www-q1.nav.no/meldekort/meldekort-api/api/person/meldekort`,
 });
 
 app.get(`${basePath}${podlet.content()}`, (req, res) => {
