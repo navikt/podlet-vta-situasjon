@@ -50,6 +50,16 @@ podlet.proxy({
   target: `${ptoProxyUrl}/proxy/veilarbregistrering/api/registrering`,
 });
 
+podlet.proxy({
+  name: "meldekort-www",
+  target: `https://www-q1.nav.no/meldekort/meldekort-api`,
+});
+
+podlet.proxy({
+  name: "meldekort-local",
+  target: `https://meldekort-api-q1.nais.oera-q.local`,
+});
+
 app.get(`${basePath}${podlet.content()}`, (req, res) => {
   const { mountOrigin, publicPathname } = res.locals.podium.context;
   const url = new URL(publicPathname, mountOrigin);
