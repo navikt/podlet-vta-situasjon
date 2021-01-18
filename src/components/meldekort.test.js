@@ -12,7 +12,7 @@ describe("tester Meldekort komponenten", () => {
     const data = {
       meldekortbruker: true,
     };
-    render(<Meldekort meldekort={data} />);
+    render(<Meldekort meldekortInfo={data} />);
     expect(screen.getByText(/meldekort/i)).toBeInTheDocument();
   });
 });
