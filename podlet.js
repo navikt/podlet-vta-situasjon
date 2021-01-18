@@ -51,13 +51,8 @@ podlet.proxy({
 });
 
 podlet.proxy({
-  name: "meldekort-www",
+  name: "meldekort",
   target: `https://www-q1.nav.no/meldekort/meldekort-api`,
-});
-
-podlet.proxy({
-  name: "meldekort-local",
-  target: `https://meldekort-api-q1.nais.oera-q.local`,
 });
 
 app.get(`${basePath}${podlet.content()}`, (req, res) => {
