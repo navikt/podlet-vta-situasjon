@@ -41,7 +41,7 @@ describe("tester Avregistrering komponenten", () => {
       formidlingsgruppe: "ARBS",
     };
     render(<Avregistrering oppfolging={oppfolging} />);
-    expect(await screen.queryByText(/min venn/i)).not.toBeInTheDocument();
+    expect(screen.queryByText(/min venn/i)).not.toBeInTheDocument();
     userEvent.click(screen.getByText(/registrert/i));
     expect(screen.getByText(/min venn/i)).toBeInTheDocument();
   });

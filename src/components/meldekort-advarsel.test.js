@@ -1,5 +1,4 @@
 import { render, screen } from "@testing-library/react";
-import hentMeldekortFrister from "../lib/meldekort-hent-frister";
 import MeldekortAdvarsel from "./meldekort-advarsel";
 
 describe("Tester komponenten MeldekortAdvarsel", () => {
