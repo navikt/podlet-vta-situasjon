@@ -15,7 +15,8 @@ function Meldekort(props) {
   const { meldekortInfo, meldekortHistorie } = props;
   if (!meldekortInfo) return null;
   if (meldekortInfo && meldekortInfo.meldekortbruker !== true) return null;
-  const dagerTilFrist = dagerTilSisteFrist(meldekortHistorie);
+  const iDag = new Date(new Date().toISOString().substr(0, 10));
+  const dagerTilFrist = dagerTilSisteFrist(iDag, meldekortHistorie);
 
   return (
     <>
