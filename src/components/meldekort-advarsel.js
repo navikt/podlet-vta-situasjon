@@ -21,7 +21,7 @@ const HasterVeldig = () => {
 function MeldekortAdvarsel(props) {
   const { dagerTilFrist } = props;
 
-  if (!dagerTilFrist) return null;
+  if (dagerTilFrist === null || typeof dagerTilFrist === "undefined") return null;
 
   if (dagerTilFrist < 0) return null;
 
