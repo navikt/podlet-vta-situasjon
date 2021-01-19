@@ -17,7 +17,7 @@ function App() {
   const { data: auth } = useSWR(authUrl, fetcher);
   const { data: meldekortInfo } = useSWR(meldekortinfoUrl, fetcher);
   const { data: meldekortHistorie } = useSWR(
-    meldekortInfo && meldekortInfo.meldekortbruker !== true ? meldekortUrl : null,
+    meldekortInfo && meldekortInfo.meldekortbruker === true ? meldekortUrl : null,
     fetcher
   );
   const { data: oppfolging } = useSWR(auth && auth.securityLevel === "4" ? oppfolgingUrl : null, fetcher);
