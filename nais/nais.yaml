@@ -42,3 +42,4 @@ spec:
         - host: api.amplitude.com
         - host: pto-proxy.dev.intern.nav.no
         - host: innloggingsstatus.dev.nav.no
+        - host: www-q1.nav.no
