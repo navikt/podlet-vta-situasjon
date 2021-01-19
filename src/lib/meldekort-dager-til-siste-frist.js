@@ -11,8 +11,7 @@ function getSisteFrist(datoStreng) {
   return dato.setDate(dato.getDate() + 7);
 }
 
-function dagerTilSisteFrist(meldekortHistorie) {
-  const iDag = new Date(new Date().toISOString().substr(0, 10));
+function dagerTilSisteFrist(iDag, meldekortHistorie) {
   let dager = false;
   if (meldekortHistorie) {
     const muligeMeldekort = arrify(meldekortHistorie.meldekort)
