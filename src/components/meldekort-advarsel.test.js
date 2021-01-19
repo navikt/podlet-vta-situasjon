@@ -9,7 +9,7 @@ describe("Tester komponenten MeldekortAdvarsel", () => {
   });
 
   test("Komponenten vises IKKE om dager til frist ikke finnes", () => {
-    const dagerTilFrist = false;
+    const dagerTilFrist = null;
     const { container } = render(<MeldekortAdvarsel dagerTilFrist={dagerTilFrist} />);
     expect(container).toBeEmptyDOMElement();
   });
