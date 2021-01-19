@@ -21,7 +21,7 @@ const HasterVeldig = () => {
 function MeldekortAdvarsel({ frister }) {
   if (!frister) return null;
 
-  const { dagerTilInaktivering, dagerFraPeriodeSlutt } = frister;
+  const { dagerTilInaktivering } = frister;
 
   if (dagerTilInaktivering < 0) return null;
 
