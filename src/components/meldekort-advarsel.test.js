@@ -1,5 +1,4 @@
-import { render, screen } from "@testing-library/react";
-import dagerTilSisteFrist from "../lib/meldekort-dager-til-siste-frist";
+import { render } from "@testing-library/react";
 import MeldekortAdvarsel from "./meldekort-advarsel";
 
 describe("Tester komponenten MeldekortAdvarsel", () => {
