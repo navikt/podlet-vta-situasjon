@@ -18,14 +18,14 @@ const HasterVeldig = () => {
   );
 };
 
-function MeldekortAdvarsel(props) {
-  const { dagerTilFrist } = props;
+function MeldekortAdvarsel({ frister }) {
+  if (!frister) return null;
 
-  if (!dagerTilFrist) return null;
+  const { dagerTilInaktivering, dagerFraPeriodeSlutt } = frister;
 
-  if (dagerTilFrist < 0) return null;
+  if (dagerTilInaktivering < 0) return null;
 
-  return <>{dagerTilFrist > 0 ? <HasterLitt dager={dagerTilFrist} /> : <HasterVeldig />}</>;
+  return <>{dagerTilInaktivering > 0 ? <HasterLitt dager={dagerTilInaktivering} /> : <HasterVeldig />}</>;
 }
 
 export default MeldekortAdvarsel;
