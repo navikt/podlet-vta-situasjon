@@ -27,7 +27,7 @@ function meldekortFrister(iDag, meldekortHistorie) {
       .filter((meldekort) => getSisteFrist(meldekort.meldeperiode.til.substr(0, 10)) >= iDag);
     if (muligeMeldekort.length === 1) {
       const meldekort = muligeMeldekort[0];
-      const periodeSlutt = new Date(meldekort.meldeperiode.kortKanSendesFra.substr(0, 10));
+      const periodeSlutt = new Date(meldekort.meldeperiode.til.substr(0, 10));
       const sisteFristForInaktivering = getSisteFrist(meldekort.meldeperiode.til);
       const dagerTilInaktivering = Math.floor((sisteFristForInaktivering - iDag) / dagIms);
       const dagerFraPeriodeSlutt = Math.floor((iDag - periodeSlutt) / dagIms);
