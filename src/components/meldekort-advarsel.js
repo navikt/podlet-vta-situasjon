@@ -7,10 +7,11 @@ function MeldekortAdvarsel({ frister }) {
   if (!frister) return null;
 
   const { dagerTilInaktivering } = frister;
-  const { meldekort } = frister;
-  const meldegruppe = meldekort.meldegruppe;
-
   if (dagerTilInaktivering < 0) return null;
+
+  const { meldekort } = frister;
+
+  const meldegruppe = meldekort.meldegruppe;
 
   return (
     <>
