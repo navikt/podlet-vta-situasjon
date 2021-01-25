@@ -23,7 +23,7 @@ function Meldekort(props) {
   return (
     <>
       <MeldekortAdvarsel frister={fristerMedMeldekort} />
-      <Knapp id={"meldekort-knapp"}>Gå til meldekortet</Knapp>
+
       <i>
         <Undertekst id={"opplysninger-meldeplikt"}>
           Det er innsending av meldekortet som opprettholder både statusen som arbeidssøker, samt brukes til å beregne

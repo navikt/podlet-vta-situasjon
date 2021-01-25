@@ -2,6 +2,7 @@ import React from "react";
 import { AlertStripeAdvarsel } from "nav-frontend-alertstriper";
 import { Ingress, Normaltekst, Undertekst, UndertekstBold } from "nav-frontend-typografi";
 import { ReactComponent as Varsel } from "./warning.svg";
+import { Knapp } from "nav-frontend-knapper";
 
 function MeldekortAdvarsel({ frister }) {
   if (!frister) return null;
@@ -33,6 +34,7 @@ function MeldekortAdvarsel({ frister }) {
           {"2. Du vil ikke lenger være registrert som arbeidssøker"}
         </Undertekst>
         <br />
+        <Knapp id={"meldekort-knapp"}>Gå til meldekortet</Knapp>
       </div>
     </>
   );
