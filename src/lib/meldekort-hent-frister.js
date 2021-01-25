@@ -25,6 +25,7 @@ function meldekortFrister(iDag, meldekortHistorie) {
       .filter((meldekort) => !meldekort.mottattDato)
       .filter((meldekort) => new Date(meldekort.meldeperiode.kortKanSendesFra.substr(0, 10)) <= iDag)
       .filter((meldekort) => getSisteFrist(meldekort.meldeperiode.til.substr(0, 10)) >= iDag);
+    console.log(muligeMeldekort);
     if (muligeMeldekort.length === 1) {
       const meldekort = muligeMeldekort[0];
       const periodeSlutt = new Date(meldekort.meldeperiode.til.substr(0, 10));
@@ -34,6 +35,7 @@ function meldekortFrister(iDag, meldekortHistorie) {
       dager = {
         dagerTilInaktivering,
         dagerFraPeriodeSlutt,
+        meldekort,
       };
     }
   }

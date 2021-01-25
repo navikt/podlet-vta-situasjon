@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Lenke from "nav-frontend-lenker";
+import { Undertekst } from "nav-frontend-typografi";
 
 function Info() {
   return <div>Da skal du høre her, min venn</div>;
@@ -22,9 +23,11 @@ function Avregistrering(props) {
 
   return (
     <div>
-      <Lenke href="#" onClick={handleToggleInfo}>
-        Jeg ønsker ikke lengre å være registrert
-      </Lenke>
+      <Undertekst>
+        <Lenke className={"avregistreringslenke"} href="#" onClick={handleToggleInfo}>
+          Jeg ønsker ikke lenger å være registrert arbeidssøker hos Nav
+        </Lenke>
+      </Undertekst>
       {visInfo && <Info />}
     </div>
   );

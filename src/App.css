@@ -1,6 +1,59 @@
 .podlet-vta-situasjon {
+    margin-top: 1rem;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 50%;
+    background: #E5E5E5;
+}
+
+.dot {
+    width: 24px;
+    height: 24px;
+    background: #FF9100;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+
+}
+
+#opplysninger-meldeplikt {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.skille {
+    width: 15%;
+    color: black;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+#meldekort-knapp {
+    margin-top: -2.2em;
+    margin-bottom: 1em;
+}
+
+.meldekortvarsel-container {
+    padding: 1.5rem;
+    margin: 1rem;
+    background: white;
+    border-radius: 2%;
+}
+
+#meldekortvarsel-ikon {
+    margin-top: -2rem;
+    border: 6px white solid;
+    border-radius: 50%;
+}
+
+#meldekortvarsel-underline {
+    border-bottom: 2px solid #FF9100;
+}
+
+#konsekvenser-for-sen-innmelding {
+    margin-top: .5rem;
 }

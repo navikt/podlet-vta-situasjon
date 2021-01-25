@@ -26,17 +26,14 @@ function App() {
   return (
     <div className="podlet-vta-situasjon">
       <Oppfolging oppfolging={oppfolging} registrering={registrering} />
-      <Meldekort meldekortInfo={meldekortInfo} meldekortHistorie={meldekortHistorie} />
+      <hr className={"skille"} />
+      {/*<span className={"dot"}></span>*/}
+
+      <Meldekort oppfolging={oppfolging} meldekortInfo={meldekortInfo} meldekortHistorie={meldekortHistorie} />
       <Avregistrering oppfolging={oppfolging} registrering={registrering} />
       <Reaktivering oppfolging={oppfolging} registrering={registrering} />
 
-      <button
-        onClick={() => {
-          throw new Error("Jeg ønsker meg en Sentry-feil til jul");
-        }}
-      >
-        Kræsj
-      </button>
+      <hr className={"skille"} />
     </div>
   );
 }
