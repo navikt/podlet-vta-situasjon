@@ -27,8 +27,6 @@ function App() {
     <div className="podlet-vta-situasjon">
       <Oppfolging oppfolging={oppfolging} registrering={registrering} />
       <hr className={"skille"} />
-      {/*<span className={"dot"}></span>*/}
-
       <Meldekort oppfolging={oppfolging} meldekortInfo={meldekortInfo} meldekortHistorie={meldekortHistorie} />
       <Avregistrering oppfolging={oppfolging} registrering={registrering} />
       <Reaktivering oppfolging={oppfolging} registrering={registrering} />
