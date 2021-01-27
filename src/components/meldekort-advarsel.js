@@ -16,26 +16,30 @@ function MeldekortAdvarsel({ frister }) {
 
   return (
     <>
-      <Normaltekst>
-        Du har {dagerTilInaktivering} {dagerTilInaktivering > 1 ? "dager" : "dag"} på deg før fristen for meldekortet
-        går ut.
-      </Normaltekst>
-      <div className={"meldekortvarsel-container"}>
-        <Varsel id={"meldekortvarsel-ikon"} alt={"Varselsikon"} fill={"blue"} />
-        <UndertekstBold>
-          Dersom du <span id={"meldekortvarsel-underline"}>ikke sender inn meldekort </span> vil:
-        </UndertekstBold>
-        <Undertekst id={"konsekvenser-for-sen-innmelding"}>
-          {meldegruppe === "DAGP"
-            ? `1. Dagpengene for dagene fra ${prettyprintDato(meldekort.meldeperiode.fra)} til 
+      <i>
+        <Normaltekst id={"dager-til-inaktivering-info"}>
+          Du har {dagerTilInaktivering} {dagerTilInaktivering > 1 ? "dager" : "dag"} på deg før fristen for meldekortet
+          går ut.
+        </Normaltekst>
+      </i>
+      {dagerTilInaktivering < 5 ? (
+        <div className={"meldekortvarsel-container"}>
+          <Varsel id={"meldekortvarsel-ikon"} alt={"Varselsikon"} fill={"blue"} />
+          <UndertekstBold>
+            Dersom du <span id={"meldekortvarsel-underline"}>ikke sender inn meldekort </span> vil:
+          </UndertekstBold>
+          <Undertekst id={"konsekvenser-for-sen-innmelding"}>
+            {meldegruppe === "DAGP"
+              ? `1. Dagpengene for dagene fra ${prettyprintDato(meldekort.meldeperiode.fra)} til 
         ${prettyprintDato(meldekort.meldeperiode.til)} ikke bli utbetalt.`
-            : ""}
+              : ""}
+            <br />
+            {"2. Du vil ikke lenger være registrert som arbeidssøker"}
+          </Undertekst>
           <br />
-          {"2. Du vil ikke lenger være registrert som arbeidssøker"}
-        </Undertekst>
-        <br />
-        <Knapp id={"meldekort-knapp"}>Gå til meldekortet</Knapp>
-      </div>
+        </div>
+      ) : null}
+      <Knapp id={"meldekort-knapp"}>Gå til meldekortet</Knapp>
     </>
   );
 }

@@ -24,15 +24,14 @@
 }
 
 .skille {
-    width: 15%;
+    width: 5%;
     color: black;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
-
-#meldekort-knapp {
-    margin-bottom: -3em;
+#dager-til-inaktivering-info {
+    margin-bottom: 1rem;
 }
 
 .meldekortvarsel-container {
