@@ -51,7 +51,8 @@
     "refresh": "rm -rf node_modules && rm package-lock.json && npm i",
     "podlet": "node podlet.js",
     "lint": "eslint --ext .js src",
-    "sentry-release": "(export SENTRY_RELEASE=$(git rev-parse --short HEAD); node scripts/sentry-release)"
+    "sentry-release": "(export SENTRY_RELEASE=$(git rev-parse --short HEAD); node scripts/sentry-release)",
+    "bump": "npx npm-check-updates --target minor -u && npm i"
   },
   "eslintConfig": {
     "plugins": [
