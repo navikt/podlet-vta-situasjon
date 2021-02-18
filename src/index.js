@@ -12,6 +12,7 @@ if (process.env.NODE_ENV === "development") {
   Sentry.init({
     dsn: "https://ced9162846f34c688ac4e07526985601@sentry.gc.nav.no/65",
     release: process.env.REACT_APP_SENTRY_RELEASE || "unknown",
+    autoSessionTracking: false,
   });
 }
 
