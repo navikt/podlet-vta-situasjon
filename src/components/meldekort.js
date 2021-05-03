@@ -8,7 +8,7 @@
 
 import React from "react";
 import MeldekortAdvarsel from "./meldekort-advarsel";
-import { Normaltekst, Systemtittel, Undertekst } from "nav-frontend-typografi";
+import { Normaltekst, Undertekst } from "nav-frontend-typografi";
 import hentFrister from "../lib/meldekort-hent-frister";
 import { ReactComponent as MeldekortOK } from "./success.svg";
 

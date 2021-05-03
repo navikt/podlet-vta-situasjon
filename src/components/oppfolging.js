@@ -1,5 +1,5 @@
 import React from "react";
-import { Normaltekst, Systemtittel, Undertittel } from "nav-frontend-typografi";
+import { Undertittel } from "nav-frontend-typografi";
 
 function Oppfolging(props) {
   const { oppfolging } = props;
