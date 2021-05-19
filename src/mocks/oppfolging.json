@@ -4,8 +4,8 @@
   "kanReaktiveres": false,
   "inaktiveringsdato": null,
   "erSykmeldtMedArbeidsgiver": false,
-  "servicegruppe": "BKART",
+  "servicegruppe": "IKVAL",
   "formidlingsgruppe": "ARBS",
-  "rettighetsgruppe": "IYT",
+  "rettighetsgruppe": "DAGP",
   "erIkkeArbeidssokerUtenOppfolging": false
 }

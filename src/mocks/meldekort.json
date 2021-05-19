@@ -54,10 +54,10 @@
       "meldekortId": 1526772064,
       "kortType": "ELEKTRONISK",
       "meldeperiode": {
-        "fra": "2021-01-10T12:00:00+01:00",
-        "til": "2021-01-24T12:00:00+01:00",
-        "kortKanSendesFra": "2021-01-23T12:00:00+01:00",
-        "kanKortSendes": false,
+        "fra": "2021-05-10T12:00:00+01:00",
+        "til": "2021-05-10T12:00:00+01:00",
+        "kortKanSendesFra": "2021-05-07T12:00:00+01:00",
+        "kanKortSendes": true,
         "periodeKode": "202103"
       },
       "meldegruppe": "DAGP",

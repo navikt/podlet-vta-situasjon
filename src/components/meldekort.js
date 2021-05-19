@@ -9,36 +9,79 @@
 import React from "react";
 import MeldekortAdvarsel from "./meldekort-advarsel";
 import { Normaltekst, Undertekst } from "nav-frontend-typografi";
-import hentFrister from "../lib/meldekort-hent-frister";
-import { ReactComponent as MeldekortOK } from "./success.svg";
+import { datoMedUkedag, datoUtenTid, plussDager } from "../utils/date-utils";
+import { hentIDag } from "../utils/chrono";
+import { beregnDagerEtterFastsattMeldedag, beregnDagerTilInaktivering } from "../utils/meldekort-utils";
 
 function Meldekort(props) {
-  const { meldekortInfo, meldekortHistorie } = props;
+  const { meldekortData, oppfolgingData, registreringsData } = props;
 
-  if (!meldekortInfo) return null;
-  if (meldekortInfo && meldekortInfo.meldekortbruker !== true) return null;
+  if (!kanViseMeldekortStatus(meldekortData, oppfolgingData, registreringsData)) {
+    return null;
+  }
 
-  const iDag = new Date(new Date().toISOString().substr(0, 10));
-  const fristerMedMeldekort = hentFrister(iDag, meldekortHistorie);
+  const iDag = datoUtenTid(hentIDag().toISOString());
+  const dagerEtterFastsattMeldedag = beregnDagerEtterFastsattMeldedag(iDag, meldekortData);
+
+  console.log(dagerEtterFastsattMeldedag);
+  if (dagerEtterFastsattMeldedag === null) return null;
+
+  const etterFoersteMeldedag = dagerEtterFastsattMeldedag > 0;
+  const dagerTilInaktivering = beregnDagerTilInaktivering(dagerEtterFastsattMeldedag);
+  const inaktiveringsDato = plussDager(iDag, dagerTilInaktivering);
 
   return (
-    <>
-      {fristerMedMeldekort ? (
-        <MeldekortAdvarsel frister={fristerMedMeldekort} />
+    <div className={"onboarding-meldekortvarsel-container"}>
+      {etterFoersteMeldedag ? (
+        <MeldekortAdvarsel
+          dagerEtterFastsattMeldedag={dagerEtterFastsattMeldedag}
+          rettighetsgruppe={oppfolgingData.rettighetsgruppe}
+        />
       ) : (
-        <div>
-          <Normaltekst> Du har sendt inn siste meldekort</Normaltekst>
-          <MeldekortOK />
-        </div>
+        <>
+          <Normaltekst className={"blokk-xs"}>Du kan nå sende inn meldekort.</Normaltekst>
+          <Normaltekst>{`Fristen er ${datoMedUkedag(inaktiveringsDato)}, klokken 23.00.`}</Normaltekst>
+        </>
       )}
-      <i>
-        <Undertekst id={"opplysninger-meldeplikt"}>
-          Det er innsending av meldekortet som opprettholder både statusen som arbeidssøker, samt brukes til å beregne
-          utbetalingen av dagpenger.
-        </Undertekst>
-      </i>
-    </>
+    </div>
   );
+}
+
+function kanViseMeldekortStatus(meldekortData, oppfolgingData, registreringData) {
+  const meldekortliste = meldekortData?.meldekort ?? [];
+  const harMeldekort = meldekortliste.length > 0;
+  if (!harMeldekort) return false;
+
+  const erAAP = oppfolgingData.rettighetsgruppe === "AAP";
+  const harDagpengerEllerArbeidssokerMeldekort =
+    meldekortliste.filter((meldekort) => ["DAGP", "ARBS"].includes(meldekort.meldegruppe ?? "NULL")).length > 0;
+
+  const brukerregistreringData = registreringData?.registrering ?? null;
+
+  const kanViseKomponent =
+    !erAAP &&
+    harDagpengerEllerArbeidssokerMeldekort &&
+    erStandardInnsatsgruppe({ brukerregistreringData, oppfolgingData }) &&
+    !oppfolgingData.kanReaktiveres;
+
+  console.log(kanViseKomponent);
+
+  return kanViseKomponent;
+}
+
+function erStandardInnsatsgruppe(data) {
+  const { brukerregistreringData, oppfolgingData } = data;
+  const foreslattInnsatsgruppe = brukerregistreringData.profilering.innsatsgruppe;
+  const { servicegruppe, formidlingsgruppe } = oppfolgingData;
+
+  if (servicegruppe === "IVURD" && formidlingsgruppe === "ARBS" && foreslattInnsatsgruppe === "STANDARD_INNSATS") {
+    return true;
+  }
+  if (servicegruppe === "IKVAL" && formidlingsgruppe === "ARBS") {
+    return true;
+  }
+
+  return false;
 }
 
 export default Meldekort;

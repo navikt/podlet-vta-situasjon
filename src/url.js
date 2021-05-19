@@ -31,7 +31,6 @@ const AUTH_URL = {
   production: "https://innloggingsstatus.dev.nav.no/person/innloggingsstatus/auth",
 };
 
-export const meldekortinfoUrl = MELDEKORTINFO_URL[getEnvironment()];
 export const meldekortUrl = MELDEKORT_URL[getEnvironment()];
 export const oppfolgingUrl = OPPFOLGING_URL[getEnvironment()];
 export const registreringUrl = REGISTRERING_URL[getEnvironment()];

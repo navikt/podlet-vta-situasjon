@@ -1,51 +1,61 @@
 import React from "react";
-import { Normaltekst, Undertekst, UndertekstBold } from "nav-frontend-typografi";
-import { ReactComponent as Varsel } from "./warning.svg";
-import { Knapp } from "nav-frontend-knapper";
+import { Element, Normaltekst } from "nav-frontend-typografi";
+import { beregnDagerTilInaktivering } from "../utils/meldekort-utils";
+import { hentIDag } from "../utils/chrono";
+import { datoMedUkedag, plussDager } from "../utils/date-utils";
 
-function MeldekortAdvarsel({ frister }) {
-  if (!frister) return null;
+function MeldekortAdvarsel({ dagerEtterFastsattMeldedag, rettighetsgruppe }) {
+  if (dagerEtterFastsattMeldedag === null) return null;
 
-  const { dagerTilInaktivering } = frister;
-  if (dagerTilInaktivering < 0) return null;
-
-  const { meldekort } = frister;
-
-  const meldegruppe = meldekort.meldegruppe;
+  const dagerTilInaktivering = beregnDagerTilInaktivering(dagerEtterFastsattMeldedag);
+  // Viser strenger melding fra dag 3 (torsdag)
+  const tillegg = dagerEtterFastsattMeldedag > 2 ? <LittStrengereVarsel rettighetsgruppe={rettighetsgruppe} /> : null;
+  const iDag = hentIDag();
+  const inaktiveringsDato = plussDager(iDag, dagerTilInaktivering);
 
   return (
     <>
-      <i>
-        <Normaltekst id={"dager-til-inaktivering-info"}>
-          Du har {dagerTilInaktivering} {dagerTilInaktivering > 1 ? "dager" : "dag"} på deg før fristen for meldekortet
-          går ut.
-        </Normaltekst>
-      </i>
-      {dagerTilInaktivering < 5 ? (
-        <div className={"meldekortvarsel-container"}>
-          <Varsel id={"meldekortvarsel-ikon"} alt={"Varselsikon"} fill={"blue"} />
-          <UndertekstBold>
-            Dersom du <span id={"meldekortvarsel-underline"}>ikke sender inn meldekort </span> vil:
-          </UndertekstBold>
-          <Undertekst id={"konsekvenser-for-sen-innmelding"}>
-            {meldegruppe === "DAGP"
-              ? `1. Dagpengene for dagene fra ${prettyprintDato(meldekort.meldeperiode.fra)} til 
-        ${prettyprintDato(meldekort.meldeperiode.til)} ikke bli utbetalt.`
-              : ""}
-            <br />
-            {"2. Du vil ikke lenger være registrert som arbeidssøker"}
-          </Undertekst>
-          <br />
-        </div>
-      ) : null}
-      <Knapp id={"meldekort-knapp"}>Gå til meldekortet</Knapp>
+      {dagerTilInaktivering <= 0 ? (
+        <Normaltekst>Siste frist for innsending av meldekortet er i kveld klokken 23.00</Normaltekst>
+      ) : (
+        <>
+          <Normaltekst>
+            Du har{" "}
+            <b>
+              {dagerTilInaktivering} {dagerTilInaktivering === 0 || dagerTilInaktivering > 1 ? "dager" : "dag"}{" "}
+            </b>
+            på å sende inn meldekort.
+          </Normaltekst>
+          <Normaltekst>Fristen er {datoMedUkedag(inaktiveringsDato)}, klokken 23.00.</Normaltekst>
+        </>
+      )}
+      {tillegg}
     </>
   );
 }
 
-export default MeldekortAdvarsel;
+const LittStrengereVarsel = ({ rettighetsgruppe }) => {
+  const dagpengerKonsekvensMelding = {
+    DAGP: "utbetaling av dagpenger stoppes",
+    IYT: "en eventuell søknad om dagpenger kan bli avslått",
+  };
 
-function prettyprintDato(dato) {
-  dato = new Date(dato);
-  return `${dato.getDate()}/${dato.getMonth() + 1}/${dato.getFullYear()}`;
-}
+  return (
+    <div className={"strenger-varsel"}>
+      <Element>Dersom du ikke sender inn meldekort vil</Element>
+
+      <ul className={"konsekvenser"}>
+        <li>
+          <Normaltekst>du ikke lenger være registrert som arbeidssøker</Normaltekst>
+        </li>
+        {["DAGP", "IYT"].includes(rettighetsgruppe) && (
+          <li>
+            <Normaltekst>{dagpengerKonsekvensMelding[rettighetsgruppe]}</Normaltekst>
+          </li>
+        )}
+      </ul>
+    </div>
+  );
+};
+
+export default MeldekortAdvarsel;

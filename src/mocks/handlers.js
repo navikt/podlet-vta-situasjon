@@ -8,7 +8,7 @@ import registrering from "./registrering.json";
 export const handlers = [
   get("https://api.nav.no/vta-api/oppfolging", oppfolging),
   get("https://api.nav.no/dittnav-api/meldekortinfo", meldekortinfo),
-  get("/meldekort/meldekort-api/api/person/meldekort", meldekort),
+  get("https://api.nav.no/api-meldekort", meldekort),
   get("https://api.nav.no/innloggingsstatus/auth", auth),
   get("https://api.nav.no/vta-api/registrering", registrering),
 ];
