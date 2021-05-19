@@ -23,7 +23,6 @@ function Meldekort(props) {
   const iDag = datoUtenTid(hentIDag().toISOString());
   const dagerEtterFastsattMeldedag = beregnDagerEtterFastsattMeldedag(iDag, meldekortData);
 
-  console.log(dagerEtterFastsattMeldedag);
   if (dagerEtterFastsattMeldedag === null) return null;
 
   const etterFoersteMeldedag = dagerEtterFastsattMeldedag > 0;
