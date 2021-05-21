@@ -17,13 +17,13 @@ const MELDEKORT_URL = {
 };
 
 const OPPFOLGING_URL = {
-  production: "https://api.nav.no/vta-api/oppfolging",
-  development: "/person/layout-dittnav/podium-resource/podlet-vta-situasjon/api-oppfolging",
+  development: "https://api.nav.no/vta-api/oppfolging",
+  production: "/person/layout-dittnav/podium-resource/podlet-vta-situasjon/api-oppfolging",
 };
 
 const REGISTRERING_URL = {
-  production: "https://api.nav.no/vta-api/registrering",
-  development: "/person/layout-dittnav/podium-resource/podlet-vta-situasjon/api-registrering",
+  development: "https://api.nav.no/vta-api/registrering",
+  production: "/person/layout-dittnav/podium-resource/podlet-vta-situasjon/api-registrering",
 };
 
 const AUTH_URL = {
