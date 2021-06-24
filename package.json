@@ -5,8 +5,8 @@
   "dependencies": {
     "@craco/craco": "6.1.2",
     "@metrics/prometheus-consumer": "3.0.1",
-    "@podium/podlet": "4.4.25",
-    "@sentry/browser": "6.3.6",
+    "@podium/podlet": "4.4.29",
+    "@sentry/browser": "6.7.2",
     "classnames": "2.3.1",
     "craco-less": "1.17.1",
     "express": "4.17.1",
@@ -16,8 +16,8 @@
     "nav-frontend-alertstriper-style": "2.1.1",
     "nav-frontend-core": "5.1.1",
     "nav-frontend-ikoner-assets": "2.0.10",
-    "nav-frontend-js-utils": "1.0.18",
-    "nav-frontend-knapper": "2.1.3",
+    "nav-frontend-js-utils": "1.0.19",
+    "nav-frontend-knapper": "2.1.4",
     "nav-frontend-knapper-style": "1.1.2",
     "nav-frontend-lenker": "1.1.2",
     "nav-frontend-lenker-style": "0.2.42",
@@ -32,15 +32,15 @@
     "swr": "0.5.6"
   },
   "devDependencies": {
-    "@sentry/cli": "1.64.1",
-    "@testing-library/jest-dom": "5.12.0",
-    "@testing-library/react": "11.2.6",
+    "@sentry/cli": "1.66.0",
+    "@testing-library/jest-dom": "5.14.1",
+    "@testing-library/react": "11.2.7",
     "@testing-library/user-event": "12.8.3",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "husky": "4.3.8",
     "lint-staged": "10.5.4",
-    "msw": "0.28.2",
-    "prettier": "2.2.1",
+    "msw": "0.29.0",
+    "prettier": "2.3.1",
     "react-scripts": "4.0.3"
   },
   "scripts": {
